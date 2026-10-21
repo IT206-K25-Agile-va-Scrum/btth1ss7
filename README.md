@@ -1,59 +1,58 @@
-# [Thực hành 1] Ước lượng Story Point với Planning Poker & Thiết lập Sprint Goal
+# [Thực hành 1] Ước lượng Story Point với Planning Poker & Thiết lập Sprint Goal - Dự án GoFood
 
 > 👤 **Học viên:** Đỗ Hoàng Sơn | **Mã SV:** PTIT-HCM-066
 > 🏫 **Môn học:** IT206-K25-Agile-va-Scrum
 
 ---
 
-## 1. Mục tiêu
+## Nhiệm vụ 1: Ước lượng Story Point với Planning Poker
 
-Trong buổi thực hành này, tôi áp dụng chuỗi Fibonacci sửa đổi (0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100) để ước lượng độ lớn tương đối của User Story dựa trên Story mốc US02. Đồng thời, tôi rèn luyện kỹ năng điều phối Planning Poker khi team có tranh luận và cách viết Sprint Goal đúng chuẩn agile.
+Trong buổi Planning của Sprint 1 (thời lượng 2 tuần) cho dự án giao đồ ăn GoFood, Scrum Team tiến hành ước lượng độ lớn tương đối của các User Story dựa trên chuỗi Fibonacci sửa đổi (0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100). Đội chọn US02 làm Story mốc với mức định giá là 2 points.
 
-- Sử dụng Story mốc US02 (2 points) làm chuẩn so sánh độ phức tạp, rủi ro và nỗ lực.
-- Thực hành giải quyết bất đồng điểm số qua thảo luận kỹ thuật thay vì lấy trung bình.
-- Xây dựng Sprint Goal tập trung vào giá trị cốt lõi thay vì liệt kê danh sách task.
+Dựa trên ba yếu tố cốt lõi gồm Độ phức tạp (Complexity), Rủi ro (Risk) và Nỗ lực (Effort), tôi đã cùng đội ngũ phân tích và đưa ra các mức điểm cho từng User Story trong Product Backlog như sau:
 
-## 2. Mô tả
+- Nguyên tắc cốt lõi: Story Point là thước đo tương đối của riêng Scrum Team, không quy đổi cứng nhắc thành số giờ công (hours).
+- Không tính điểm trung bình các phiếu biểu quyết, mọi con số đều phải thông qua tranh luận kỹ thuật để tìm ra tiếng nói chung.
 
-Đóng vai trò là thành viên trong Scrum Team của dự án giao đồ ăn 'GoFood', tôi tiến hành ước lượng và lập kế hoạch cho Sprint 1 với 4 User Story đã cho.
+| Mã User Story | Tên User Story | Story Point | Lập luận so sánh với Story mốc (US02 = 2 points) |
+| --- | --- | --- | --- |
+| US01 | Đăng nhập bằng số điện thoại và mật khẩu | 1 point | Nhỏ hơn US02 vì tính năng này chỉ bao gồm giao diện form nhập liệu cơ bản và kiểm tra chuỗi ký tự mật khẩu trong cơ sở dữ liệu, chưa bao gồm luồng phức tạp tích hợp cổng gửi mã OTP qua SMS bên thứ ba. |
+| US02 | Xem danh sách món ăn kèm giá tiền | 2 points | Đây là Story mốc chuẩn của đội (Reference Story). Mức độ phức tạp trung bình khi vừa render danh sách dạng lưới, vừa xử lý hiển thị giá tiền và hình ảnh món ăn. |
+| US03 | Tìm kiếm quán ăn qua GPS xung quanh vị trí | 3 points | Lớn hơn US02 do có độ phức tạp cao hơn về mặt thuật toán tính toán khoảng cách địa lý dựa trên tọa độ vĩ độ/kinh độ, tích hợp API định vị GPS của thiết bị và xử lý ngoại lệ khi khách hàng tắt quyền định vị. |
+| US04 | Thanh toán đơn hàng qua Napas/Thẻ quốc tế | 8 points | Lớn hơn US02 đáng kể bởi rủi ro kỹ thuật rất cao, phụ thuộc vào việc tích hợp các cổng thanh toán bên thứ ba (Sandbox/Production), xử lý callback, bảo mật thông tin tài chính và các tình huống giao dịch lỗi/timeout. |
 
-- Bối cảnh: Dự án GoFood chuẩn bị khởi động Sprint 1 kéo dài 2 tuần.
-- Story mốc làm chuẩn: US02 = 2 points (Là khách hàng, tôi muốn xem danh sách các món ăn kèm giá tiền của từng quán).
+## Nhiệm vụ 2: Mô phỏng xử lý bất đồng Planning Poker
 
-## 3. Bước 1 (Ước lượng Story Point)
+Trong quá trình biểu quyết cho US03 (Tìm kiếm quán ăn qua GPS), Dev Senior giơ thẻ 2 points vì cho rằng team đã có sẵn thư viện tính toán khoảng cách haversine từ project cũ, trong khi Dev Junior giơ thẻ 5 points do lo ngại về độ trễ khi lấy tọa độ GPS thực tế trên các dòng máy Android đời cũ và việc xử lý màn hình hiển thị khi không có kết nối mạng.
 
-Dựa trên 3 yếu tố cốt lõi là Độ phức tạp, Rủi ro và Nỗ lực, tôi tiến hành so sánh các User Story còn lại với Story mốc US02 và đưa ra các điểm số Fibonacci phù hợp kèm theo luận điểm giải thích chi tiết.
+Scrum Master ngay lập tức can thiệp bằng cách yêu cầu cả hai lập luận rõ lý do. Dev Senior giải thích về thư viện sẵn có, còn Dev Junior chỉ ra các edge cases về phần cứng và quyền truy cập vị trí.
 
-| User Story | Story Point | Luận điểm so sánh với US02 (2 points) |
-| --- | --- | --- |
-| US01: Đăng nhập bằng SĐT và mật khẩu | 1 points | Nhỏ hơn US02. Task này chỉ xây dựng form đăng nhập cơ bản và kiểm tra mật khẩu, chưa bao gồm việc tích hợp dịch vụ gửi mã OTP qua SMS bên thứ ba nên độ phức tạp thấp hơn. |
-| US02: Xem danh sách món ăn kèm giá | 2 points | Story mốc của đội. Dùng làm chuẩn để so sánh các story khác về mặt UI list và gọi API đơn giản. |
-| US03: Tìm kiếm quán ăn qua GPS | 5 points | Lớn hơn US02. Tác vụ này đòi hỏi tích hợp định vị GPS của thiết bị di động, thuật toán tính khoảng cách địa lý theo bán kính và xử lý ngoại lệ khi khách hàng tắt quyền truy cập vị trí. |
-| US04: Thanh toán qua Napas / Thẻ quốc tế | 8 points | Lớn hơn US02 đáng kể. Phụ thuộc vào cổng thanh toán bên thứ ba, đòi hỏi xử lý các trạng thái giao dịch phức tạp (thành công, thất bại, pending) và tuân thủ các tiêu chuẩn bảo mật dữ liệu tài chính khắt khe. |
+Sau khi thảo luận làm rõ các rủi ro mà Dev Junior nêu ra, toàn team nhận ra phần xử lý ngoại lệ GPS tốn sức hơn tưởng tượng và đi đến đồng thuận chốt lại con số 3 points cho US03.
 
-## 4. Bước 2 (Mô phỏng xử lý bất đồng Planning Poker)
+- Scrum Master giữ vai trò điều phối trung lập, không áp đặt ý kiến.
+- Mục đích của việc tranh luận là để chia sẻ góc nhìn kỹ thuật và làm rõ yêu cầu (Acceptance Criteria), không phải thắng thua.
 
-Giả sử ở US03, Dev Senior chọn 2 points vì cho rằng việc gọi thư viện GPS có sẵn rất nhanh, trong khi Dev Junior chọn 5 points do lo ngại về các ca biên (edge cases) khi thiết bị mất tín hiệu định vị hoặc người dùng từ chối cấp quyền.
+## Nhiệm vụ 3: Thiết lập Sprint Goal
 
-Scrum Master điều phối bằng cách yêu cầu cả hai giải thích góc nhìn kỹ thuật của mình. Sau khi phân tích sâu về rủi ro xử lý ngoại lệ GPS, team thống nhất điều chỉnh và chốt lại con số đồng thuận là 5 points cho US03.
+Câu phát biểu Sprint Goal cho Sprint 1 được xây dựng theo đúng nguyên tắc tập trung vào giá trị cốt lõi, hướng tới việc giúp khách hàng hoàn thành luồng nghiệp vụ mua hàng đầu tiên:
 
-- Không lấy trung bình cộng điểm số các phiếu bầu.
-- Tập trung tranh luận dựa trên rủi ro thực tế và độ phức tạp kỹ thuật.
+'Giúp khách hàng tìm được quán ăn gần nhất, xem menu và hoàn thành đơn đặt món ăn đầu tiên thành công.'
 
-## 5. Bước 3 (Thiết lập Sprint Goal)
+- Sprint Goal này đóng vai trò kim chỉ nam, giúp Scrum Team từ chối các tính năng lan man không phục vụ trực tiếp cho việc đặt món.
+- Không viết Sprint Goal dưới dạng liệt kê danh sách các công việc hay User Story rời rạc.
 
-Sprint Goal được viết ngắn gọn, tập trung vào giá trị mang lại cho người dùng cuối thay vì liệt kê danh sách các đầu việc (task list) phải làm trong Sprint.
+## Nhiệm vụ 4: Phân loại tính năng ngoài mục tiêu
 
-- Câu phát biểu Sprint Goal hoàn chỉnh: 'Giúp khách hàng tìm được quán ăn gần nhất và hoàn thành đơn đặt món ăn đầu tiên thành công'.
+Nếu trong quá trình Sprint 1 đang diễn ra, Product Owner (PO) hoặc Stakeholder yêu cầu bổ sung ngay tính năng 'Nhập mã giảm giá khuyến mãi', hướng xử lý của Scrum Team sẽ tuân thủ nghiêm ngặt các nguyên tắc của Scrum như sau:
 
-## 6. Bước 4 (Phân loại tính năng ngoài mục tiêu)
+Thứ nhất, tuyệt đối không đưa tính năng mã giảm giá vào Sprint 1 hiện tại vì sẽ làm thay đổi Sprint Backlog, gây quá tải cho đội ngũ và phá vỡ Sprint Goal đã cam kết.
 
-Nếu Product Owner đề xuất thêm tính năng 'Nhập mã giảm giá khuyến mãi' ngay trong Sprint 1, theo đúng nguyên tắc Scrum, tính năng này không phục vụ trực tiếp cho Sprint Goal hiện tại ('hoàn thành đơn đặt món đầu tiên thành công').
+Thứ hai, Product Owner sẽ tiếp nhận yêu cầu, viết lại thành User Story hoàn chỉnh và đưa vào Product Backlog, sau đó tiến hành sắp xếp lại thứ tự ưu tiên (Refinement).
 
-Hướng xử lý: Product Owner sẽ ghi nhận yêu cầu mới này vào Product Backlog, tiến hành sắp xếp lại thứ tự ưu tiên (refinement), và đưa ra cân nhắc thảo luận trong buổi Sprint Planning kế tiếp thay vì nhồi nhét vào Sprint 1 đang chạy.
+Thứ ba, tính năng này sẽ được đưa ra thảo luận và cân nhắc đưa vào Sprint Planning của Sprint kế tiếp (Sprint 2) dựa trên dung lượng (Velocity) của đội.
 
-- Bảo vệ sự tập trung của Scrum Team trong suốt vòng đời Sprint.
-- Đảm bảo Product Backlog luôn được cập nhật linh hoạt theo yêu cầu kinh doanh.
+- Bảo vệ sự ổn định của Sprint Goal là trách nhiệm của Scrum Master và toàn đội.
+- Product Backlog là nơi linh hoạt tiếp nhận mọi thay đổi, nhưng Sprint Backlog trong chu kỳ Sprint là bất khả xâm phạm trừ khi hủy Sprint.
 
 ---
 
